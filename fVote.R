@@ -12,9 +12,6 @@
 ## Al Gore
 ## Ralph Nadar
 ## Pat Buchanan
-## Nelson
-## McCollum
-## Logan
 ##
 ## 66 COUNTIES
 ## Alachua, Baker, Bay, Bradford, Brevard, Broward, Calhoun,
@@ -634,6 +631,12 @@ sumBuchanan
 # Ralph Nader
 sumNader <- sum(ralphNader)
 sumNader
+# put into unsorted vector and show
+sumUnsorted <- c(sumGore, sumBush, sumBuchanan, sumNader)
+sumUnsorted
+# put into sorted vector and show
+sumSorted <- sort(sumUnsorted,decreasing=T)
+sumSorted
 
 # get standard dev and variance for each candidate and show
 # Gore
@@ -649,21 +652,16 @@ sdBuchanan
 sdNader <- sd(ralphNader)
 sdNader
 
-######################################################
-# Graphs
-######################################################
-# simple barchart for candidates in Alachua County
-
-
-######################################################
-# This section contains tests and experimental code
-# that should probably be ignored because most of it
-# doesn't work.
-#
-# 4/16/14 tests
-######################################################
-#gd <- graph(c(1,2,3,4))
-#plot(gd)
-#gd <- graph(c(sortBush,sortGore))
-#plot(gd)
-## the above plot doesn't work
+##########################################################
+# test code
+##########################################################
+# Produce a bubble chart with sumSorted
+# order is Bush, Gore, Nader, Buchanan
+size <- abs(sumSorted)/sqrt(pi)
+size
+par(bg='cornsilk')
+# plot the bubble chart
+symbols(sumSorted,circles=size,fg="tan4",bg='orange2',main='2000 Florida Presidental Election',xlab='Candidates',ylab='Votes')
+candidates <- c("Gore","Bush","Nader","Buchanan")
+# help for symbols
+#?symbols
